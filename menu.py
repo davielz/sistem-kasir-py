@@ -1,6 +1,5 @@
 def show_main_menu():
-    # --- 2. KONFIGURASI TEKS ---
-    app_title = "SISTEM KASIR UMKM IKMI CIREBON"
+    app_title = "SISTEM KASIR UMKM SEDERHANA"
 
     head_kiri = "MANAJEMEN DATA"
     head_kanan = "TRANSAKSI"
@@ -19,15 +18,14 @@ def show_main_menu():
         "",
     ]
 
-    # [UBAH DI SINI] Bagian bawah sekarang menggunakan Array/List
     menu_bawah = [
         "[0] Keluar Aplikasi",
         "[/c] Bersihkan Layar",
         "[/d] Hapus Barang",
     ]
 
-    # --- 3. LOGIKA RESPONSIVE (Menghitung Lebar Kotak) ---
-    padding = 10
+    # LOGIKA RESPONSIVE (Menghitung Lebar Kotak)
+    padding = 12
 
     # Hitung lebar kolom kiri & kanan dasar
     max_len_kiri = max(len(head_kiri), max(len(x) for x in menu_kiri))
@@ -39,7 +37,7 @@ def show_main_menu():
     w_total = w_kiri + w_kanan + 1
 
     # Cek apakah Judul ATAU Menu Bawah ada yang lebih lebar dari tabel?
-    # Kita cari item terpanjang di menu bawah
+    # Cari item terpanjang di menu bawah
     max_len_bawah = max(len(x) for x in menu_bawah)
 
     # Bandingkan lebar tabel saat ini vs Judul vs Menu Bawah
@@ -52,7 +50,7 @@ def show_main_menu():
         w_kanan += diff - (diff // 2)
         w_total = w_kiri + w_kanan + 1
 
-    # --- 4. RENDER TAMPILAN (Print) ---
+    # RENDER TAMPILAN
     # Atas & Judul
     print(f"╔{'═' * w_total}╗")
     print(f"║{app_title.center(w_total)}║")
