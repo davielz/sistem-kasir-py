@@ -87,7 +87,7 @@ def update_product():
     if not any(item["kode"] == kode for item in products_data):
         print(f"[!] Kode barang '{kode}' tidak ditemukan.")
         return
-    item = next(item for item in products_data if item["kode"] == kode)
+    item = get_product_by_code(kode)
     print(
         f"[✓] Barang ditemukan: {kode} - {item['nama']} (Stok: {item['stok']}, Harga: {format_rupiah(item['harga'])})"
     )
@@ -98,20 +98,23 @@ def update_product():
     choice = input_int("Pilih atribut yang ingin diupdate (1/2/3): ")
     if choice == 1:
         new_name = input_not_empty(">> Masukkan Nama Baru: ")
-        item["nama"] = new_name
+        # item["nama"] = new_name
+        set_product(kode, nama=new_name)
     elif choice == 2:
         new_stock = input_int(
             ">> Masukkan Perubahan Stok (-3 atau 2): ", positive_only=False
         )
-        item["stok"] += new_stock
+        # item["stok"] += new_stock
+        set_product(kode, stok=new_stock)
     elif choice == 3:
         new_price = input_float(">> Masukkan Harga Baru: ", positive_only=True)
-        item["harga"] = new_price
+        # item["harga"] = new_price
+        set_product(kode, harga=new_price)
     else:
         print("[!] Pilihan tidak valid. Update dibatalkan.")
         return
-    products_data.remove(item)
-    products_data.append(item)
+    # products_data.remove(item)
+    # products_data.append(item)
     save_products()
     print(f"[✓] Barang dengan kode '{kode}' berhasil diupdate.")
 
@@ -155,3 +158,24 @@ def delete_product():
         print(f"[✓] Barang dengan kode '{kode}' berhasil dihapus.")
     else:
         print(f"[!] Kode barang '{kode}' tidak ditemukan.")
+
+
+def get_all_product_codes():
+    return [item["kode"] for item in products_data]
+
+
+def get_product_by_code(kode):
+    return next((item for item in products_data if item["kode"] == kode), None)
+
+
+def set_product(kode, nama=None, stok=None, harga=None):
+    for item in products_data:
+        if item["kode"] == kode:
+            if nama:
+                item["nama"] = nama
+            if stok is not None:
+                item["stok"] += stok
+            if harga is not None:
+                item["harga"] = harga
+            break
+    save_products()

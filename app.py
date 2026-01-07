@@ -6,6 +6,10 @@ from product import (
     search_product,
     delete_product,
 )
+from transaction import (
+    input_transaksi,
+    tampilkan_transaksi,
+)
 import os
 
 
@@ -26,7 +30,7 @@ def main():
         elif user_choice == "4":
             search_product()
         elif user_choice == "5":
-            print("[!] Fitur transaksi belum tersedia.")
+            input_transaksi()
         elif user_choice == "6":
             print("[!] Fitur transaksi belum tersedia.")
         elif user_choice == "7":
