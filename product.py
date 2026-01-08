@@ -60,10 +60,9 @@ def add_product():
     kode = input_not_empty(">> Kode Barang: ")
 
     # Cek apakah kode barang sudah ada
-    for item in products_data:
-        if item["kode"] == kode:
-            print(f"[!] Kode barang '{kode}' sudah ada. Penambahan dibatalkan.")
-            return
+    if get_product_by_code(kode) != None:
+        print(f"[!] Kode barang '{kode}' sudah ada. Penambahan dibatalkan.")
+        return
 
     nama = input_not_empty(">> Nama Barang: ")
     stok = input_int(">> Stok Awal (Bilangan bulat): ", positive_only=True)

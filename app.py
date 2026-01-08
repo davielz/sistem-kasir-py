@@ -6,10 +6,7 @@ from product import (
     search_product,
     delete_product,
 )
-from transaction import (
-    input_transaksi,
-    tampilkan_transaksi,
-)
+from transaction import input_transaksi, tampilkan_riwayat_transaksi, rekap_pendapatan
 import os
 
 
@@ -32,9 +29,9 @@ def main():
         elif user_choice == "5":
             input_transaksi()
         elif user_choice == "6":
-            print("[!] Fitur transaksi belum tersedia.")
+            tampilkan_riwayat_transaksi()
         elif user_choice == "7":
-            print("[!] Fitur transaksi belum tersedia.")
+            rekap_pendapatan()
         elif user_choice.strip() == "/c":
             os.system("cls" if os.name == "nt" else "clear")
             show_main_menu()
