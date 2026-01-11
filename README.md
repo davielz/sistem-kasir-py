@@ -9,7 +9,7 @@ Ini adalah Mini Project yang dibuat untuk memenuhi tugas mata kuliah Algoritma d
 - Farel Yusprianto
 - Ahmad Maulana
 
-## Cara Penggunaan
+## Cara Menjalankan
 
 - Windows:
 
@@ -35,7 +35,11 @@ python3 app.py
   - Update harga barang
 - Pencarian Barang
 - Hapus Barang
+- Menyimpan data barang ke dalam file json
 
-## Fitur Yang Akan Ditambahkan
+## Pengelolaan Transaksi
 
-- Pengelolaan Transaksi
+- Melakukan transaksi
+- Menampilkan riwayat transaksi
+- Menampilkan rekap pendapatan
+- Menyimpan riwayat transaksi ke file csv

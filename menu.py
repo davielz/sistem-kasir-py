@@ -7,7 +7,7 @@ def show_main_menu():
     menu_kiri = [
         "[1] Daftar Barang",
         "[2] Tambah Barang",
-        "[3] Update Stok/Harga",
+        "[3] Update Nama/Stok/Harga",
         "[4] Cari Barang",
     ]
 
